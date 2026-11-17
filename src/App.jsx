@@ -58,7 +58,7 @@ export default function App() {
   // Pinned tools persisted in localStorage
   const [pinnedToolIds, setPinnedToolIds] = useState(() => {
     try {
-      const saved = localStorage.getItem('qtd267_pinned_tools');
+      const saved = localStorage.getItem('htt267_pinned_tools') || localStorage.getItem('qtd267_pinned_tools');
       return saved ? JSON.parse(saved) : ['tool-json', 'tool-qrcode'];
     } catch {
       return ['tool-json', 'tool-qrcode'];
@@ -78,7 +78,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('qtd267_pinned_tools', JSON.stringify(pinnedToolIds));
+      localStorage.setItem('htt267_pinned_tools', JSON.stringify(pinnedToolIds));
     } catch {
       // ignore storage errors
     }
@@ -177,22 +177,22 @@ export default function App() {
     <div
       className={`min-h-screen transition-colors duration-300 ${
         darkMode
-          ? 'bg-slate-950 text-slate-100'
-          : 'bg-slate-50 text-slate-900'
+          ? 'bg-stone-950 text-stone-100'
+          : 'bg-stone-50 text-stone-900'
       }`}
     >
-      {/* Ambient Background Glow */}
+      {/* Ambient Background Glow - Warm Terracotta & Amber */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-blue-600/15 blur-[130px]" />
-        <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-teal-500/15 blur-[130px]" />
+        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-rose-600/15 blur-[140px]" />
+        <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-amber-500/15 blur-[140px]" />
       </div>
 
       {/* Sticky Header / Navbar */}
       <header
         className={`sticky top-0 z-40 backdrop-blur-xl border-b transition-colors ${
           darkMode
-            ? 'bg-slate-950/80 border-slate-800/80'
-            : 'bg-white/85 border-slate-200'
+            ? 'bg-stone-950/85 border-stone-800/80'
+            : 'bg-white/85 border-stone-200'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
@@ -202,7 +202,7 @@ export default function App() {
             onClick={() => setActiveTab('all')}
             className="flex items-center gap-3 group shrink-0"
           >
-            <div className="w-11 h-11 rounded-xl overflow-hidden bg-white p-1 shadow-md shadow-cyan-500/15 border border-cyan-500/30 flex items-center justify-center group-hover:scale-105 transition-transform">
+            <div className="w-12 h-12 rounded-xl overflow-hidden bg-white p-1 shadow-md shadow-amber-500/15 border border-amber-500/30 flex items-center justify-center group-hover:scale-105 transition-transform">
               <img
                 src={SITE_CONFIG.logoUrl}
                 alt={SITE_CONFIG.brandName}
@@ -211,14 +211,14 @@ export default function App() {
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-rose-500 via-amber-500 to-yellow-400 bg-clip-text text-transparent">
                   {SITE_CONFIG.brandName}
                 </span>
-                <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
-                  Personal Hub
+                <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">
+                  hoangtienthanh.com.vn
                 </span>
               </div>
-              <p className={`text-xs hidden sm:block ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+              <p className={`text-xs hidden sm:block ${darkMode ? 'text-stone-400' : 'text-stone-500'}`}>
                 Blog Bài Viết & Bộ Công Cụ
               </p>
             </div>
@@ -226,7 +226,7 @@ export default function App() {
 
           {/* Quick Search Bar */}
           <div className="relative flex-1 max-w-md">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               ref={searchInputRef}
               type="text"
@@ -235,14 +235,14 @@ export default function App() {
               placeholder="Tìm bài viết hoặc công cụ... (Ctrl + K)"
               className={`w-full pl-10 pr-16 py-2 rounded-xl text-sm border transition-all focus:outline-none ${
                 darkMode
-                  ? 'bg-slate-900/90 border-slate-800 text-slate-100 placeholder:text-slate-500 focus:border-cyan-500'
-                  : 'bg-slate-100 border-slate-200 text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-cyan-600'
+                  ? 'bg-stone-900/90 border-stone-800 text-stone-100 placeholder:text-stone-500 focus:border-amber-500'
+                  : 'bg-stone-100 border-stone-200 text-stone-900 placeholder:text-stone-400 focus:bg-white focus:border-amber-600'
               }`}
             />
             {searchQuery ? (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-cyan-400 hover:underline"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-amber-400 hover:underline"
               >
                 Xóa
               </button>
@@ -250,8 +250,8 @@ export default function App() {
               <kbd
                 className={`hidden sm:inline-block absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 text-[10px] font-mono rounded border ${
                   darkMode
-                    ? 'bg-slate-800 border-slate-700 text-slate-400'
-                    : 'bg-white border-slate-300 text-slate-500'
+                    ? 'bg-stone-800 border-stone-700 text-stone-400'
+                    : 'bg-white border-stone-300 text-stone-500'
                 }`}
               >
                 Ctrl K
@@ -264,8 +264,8 @@ export default function App() {
             <nav
               className={`hidden md:flex items-center p-1 rounded-xl border ${
                 darkMode
-                  ? 'bg-slate-900 border-slate-800'
-                  : 'bg-slate-100 border-slate-200'
+                  ? 'bg-stone-900 border-stone-800'
+                  : 'bg-stone-100 border-stone-200'
               }`}
             >
               {[
@@ -278,10 +278,10 @@ export default function App() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeTab === tab.id
-                      ? 'bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-sm'
+                      ? 'bg-gradient-to-r from-rose-600 via-amber-600 to-amber-500 text-white shadow-sm'
                       : darkMode
-                      ? 'text-slate-400 hover:text-white'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'text-stone-400 hover:text-white'
+                      : 'text-stone-600 hover:text-stone-900'
                   }`}
                 >
                   {tab.label}
@@ -293,8 +293,8 @@ export default function App() {
               onClick={() => setDarkMode(!darkMode)}
               className={`p-2.5 rounded-xl border transition-colors ${
                 darkMode
-                  ? 'bg-slate-900 border-slate-800 text-amber-400 hover:bg-slate-800'
-                  : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200'
+                  ? 'bg-stone-900 border-stone-800 text-amber-400 hover:bg-stone-800'
+                  : 'bg-stone-100 border-stone-200 text-stone-700 hover:bg-stone-200'
               }`}
               title={darkMode ? 'Chuyển sang Giao diện Sáng' : 'Chuyển sang Giao diện Tối'}
             >
@@ -310,27 +310,27 @@ export default function App() {
         <section
           className={`relative overflow-hidden rounded-3xl border p-6 sm:p-10 ${
             darkMode
-              ? 'bg-gradient-to-br from-slate-900 via-slate-900/95 to-cyan-950/40 border-slate-800/90'
-              : 'bg-gradient-to-br from-white via-cyan-50/40 to-blue-50/60 border-slate-200 shadow-lg shadow-slate-200/50'
+              ? 'bg-gradient-to-br from-stone-900 via-stone-900/95 to-amber-950/30 border-stone-800/90'
+              : 'bg-gradient-to-br from-white via-amber-50/40 to-orange-50/60 border-stone-200 shadow-lg shadow-stone-200/50'
           }`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold">
                 <Globe className="w-3.5 h-3.5" />
                 <span>{SITE_CONFIG.heroBadge}</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
                 Xin chào, đây là không gian số{' '}
-                <span className="bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-rose-500 via-amber-500 to-yellow-400 bg-clip-text text-transparent">
                   {SITE_CONFIG.brandName}
                 </span>
               </h1>
 
               <p
                 className={`text-sm sm:text-base max-w-2xl leading-relaxed ${
-                  darkMode ? 'text-slate-300' : 'text-slate-600'
+                  darkMode ? 'text-stone-300' : 'text-stone-600'
                 }`}
               >
                 {SITE_CONFIG.tagline} Tích hợp các tiện ích xử lý nhanh ngay trên trình duyệt và
@@ -342,7 +342,7 @@ export default function App() {
                 <a
                   href="#tools-section"
                   onClick={() => setActiveTab('all')}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 text-white text-sm font-semibold shadow-lg shadow-cyan-500/20 transition-all"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 via-amber-600 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white text-sm font-semibold shadow-lg shadow-amber-950/30 transition-all"
                 >
                   <Wrench className="w-4 h-4" />
                   Khám phá Bộ Công Cụ ({TOOLS_DATA.length})
@@ -352,11 +352,11 @@ export default function App() {
                   onClick={() => setActiveTab('all')}
                   className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border text-sm font-semibold transition-all ${
                     darkMode
-                      ? 'bg-slate-800/80 hover:bg-slate-800 border-slate-700 text-slate-100'
-                      : 'bg-white hover:bg-slate-100 border-slate-300 text-slate-800'
+                      ? 'bg-stone-800/80 hover:bg-stone-800 border-stone-700 text-stone-100'
+                      : 'bg-white hover:bg-stone-100 border-stone-300 text-stone-800'
                   }`}
                 >
-                  <BookOpen className="w-4 h-4 text-teal-400" />
+                  <BookOpen className="w-4 h-4 text-amber-400" />
                   Đọc Bài Viết ({POSTS_DATA.length})
                 </a>
               </div>
@@ -365,11 +365,11 @@ export default function App() {
             {/* Right Logo & Quick Stats Showcase */}
             <div className="lg:col-span-4 flex flex-col items-center justify-center space-y-4">
               <div className="relative group">
-                <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-blue-600 to-teal-400 opacity-30 blur-xl group-hover:opacity-50 transition-opacity" />
-                <div className="relative bg-white rounded-2xl p-4 shadow-xl border border-cyan-500/30">
+                <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-rose-600 via-amber-500 to-yellow-400 opacity-25 blur-xl group-hover:opacity-45 transition-opacity" />
+                <div className="relative bg-white rounded-2xl p-4 shadow-xl border border-amber-500/30">
                   <img
                     src={SITE_CONFIG.logoUrl}
-                    alt="QTD 267 Logo"
+                    alt="HTT 267 Logo"
                     className="w-48 sm:w-56 h-28 object-contain"
                   />
                 </div>
@@ -379,38 +379,38 @@ export default function App() {
                 <div
                   className={`p-2.5 rounded-xl border ${
                     darkMode
-                      ? 'bg-slate-950/60 border-slate-800'
-                      : 'bg-white/90 border-slate-200'
+                      ? 'bg-stone-950/60 border-stone-800'
+                      : 'bg-white/90 border-stone-200'
                   }`}
                 >
-                  <div className="text-lg font-extrabold text-cyan-400">
+                  <div className="text-lg font-extrabold text-amber-400">
                     {interactiveToolsList.length}
                   </div>
-                  <div className="text-[11px] text-slate-400">Tool chạy ngay</div>
+                  <div className="text-[11px] text-stone-400">Tool chạy ngay</div>
                 </div>
                 <div
                   className={`p-2.5 rounded-xl border ${
                     darkMode
-                      ? 'bg-slate-950/60 border-slate-800'
-                      : 'bg-white/90 border-slate-200'
+                      ? 'bg-stone-950/60 border-stone-800'
+                      : 'bg-white/90 border-stone-200'
                   }`}
                 >
-                  <div className="text-lg font-extrabold text-teal-400">
+                  <div className="text-lg font-extrabold text-orange-400">
                     {TOOLS_DATA.length}
                   </div>
-                  <div className="text-[11px] text-slate-400">Tổng số Tool</div>
+                  <div className="text-[11px] text-stone-400">Tổng số Tool</div>
                 </div>
                 <div
                   className={`p-2.5 rounded-xl border ${
                     darkMode
-                      ? 'bg-slate-950/60 border-slate-800'
-                      : 'bg-white/90 border-slate-200'
+                      ? 'bg-stone-950/60 border-stone-800'
+                      : 'bg-white/90 border-stone-200'
                   }`}
                 >
-                  <div className="text-lg font-extrabold text-blue-400">
+                  <div className="text-lg font-extrabold text-rose-400">
                     {POSTS_DATA.length}
                   </div>
-                  <div className="text-[11px] text-slate-400">Bài viết</div>
+                  <div className="text-[11px] text-stone-400">Bài viết</div>
                 </div>
               </div>
             </div>
@@ -429,10 +429,10 @@ export default function App() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 py-2 rounded-xl text-xs font-bold ${
                 activeTab === tab.id
-                  ? 'bg-gradient-to-r from-blue-600 to-teal-500 text-white'
+                  ? 'bg-gradient-to-r from-rose-600 via-amber-600 to-amber-500 text-white'
                   : darkMode
-                  ? 'bg-slate-900 text-slate-400 border border-slate-800'
-                  : 'bg-white text-slate-600 border border-slate-200'
+                  ? 'bg-stone-900 text-stone-400 border border-stone-800'
+                  : 'bg-white text-stone-600 border border-stone-200'
               }`}
             >
               {tab.label}
@@ -447,13 +447,13 @@ export default function App() {
           <section id="tools-section" className="space-y-6 scroll-mt-20">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-1">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 mb-1">
                   <Terminal className="w-4 h-4" />
                   <span>Utilities & Bookmarks</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold flex items-center gap-3">
                   <span>Danh Sách Các Tool</span>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 font-semibold">
+                  <span className="text-xs px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 font-semibold">
                     {filteredTools.length} công cụ
                   </span>
                 </h2>
@@ -467,10 +467,10 @@ export default function App() {
                     onClick={() => setSelectedToolCategory(cat)}
                     className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all ${
                       selectedToolCategory === cat
-                        ? 'bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-sm'
+                        ? 'bg-gradient-to-r from-rose-600 via-amber-600 to-amber-500 text-white shadow-sm'
                         : darkMode
-                        ? 'bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800'
-                        : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
+                        ? 'bg-stone-900 hover:bg-stone-800 text-stone-300 border border-stone-800'
+                        : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'
                     }`}
                   >
                     {cat}
@@ -484,8 +484,8 @@ export default function App() {
               <div
                 className={`p-10 rounded-2xl border text-center ${
                   darkMode
-                    ? 'bg-slate-900/50 border-slate-800 text-slate-400'
-                    : 'bg-white border-slate-200 text-slate-500'
+                    ? 'bg-stone-900/50 border-stone-800 text-stone-400'
+                    : 'bg-white border-stone-200 text-stone-500'
                 }`}
               >
                 Không tìm thấy công cụ nào khớp với từ khóa "{searchQuery}".
@@ -503,8 +503,8 @@ export default function App() {
                       onClick={() => handleOpenTool(tool)}
                       className={`group relative rounded-2xl border p-5 flex flex-col justify-between cursor-pointer transition-all duration-200 hover:-translate-y-1 ${
                         darkMode
-                          ? 'bg-slate-900/80 hover:bg-slate-900 border-slate-800/90 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-950/30'
-                          : 'bg-white hover:bg-cyan-50/20 border-slate-200 hover:border-cyan-500 hover:shadow-lg'
+                          ? 'bg-stone-900/80 hover:bg-stone-900 border-stone-800/90 hover:border-amber-500/50 hover:shadow-xl hover:shadow-amber-950/30'
+                          : 'bg-white hover:bg-amber-50/20 border-stone-200 hover:border-amber-500 hover:shadow-lg'
                       }`}
                     >
                       <div>
@@ -513,10 +513,10 @@ export default function App() {
                           <div
                             className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
                               isInteractive
-                                ? 'bg-gradient-to-br from-blue-600 to-teal-500 text-white shadow-md shadow-cyan-500/20'
+                                ? 'bg-gradient-to-br from-rose-600 via-amber-600 to-amber-500 text-white shadow-md shadow-amber-500/20'
                                 : darkMode
-                                ? 'bg-slate-800 text-cyan-400 border border-slate-700'
-                                : 'bg-cyan-50 text-cyan-700 border border-cyan-200'
+                                ? 'bg-stone-800 text-amber-400 border border-stone-700'
+                                : 'bg-amber-50 text-amber-700 border border-amber-200'
                             }`}
                           >
                             <IconComp className="w-5 h-5" />
@@ -526,10 +526,10 @@ export default function App() {
                             <span
                               className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${
                                 isInteractive
-                                  ? 'bg-teal-500/15 text-teal-300 border-teal-500/30'
+                                  ? 'bg-amber-500/15 text-amber-300 border-amber-500/30'
                                   : darkMode
-                                  ? 'bg-slate-800 text-slate-300 border-slate-700'
-                                  : 'bg-slate-100 text-slate-600 border-slate-200'
+                                  ? 'bg-stone-800 text-stone-300 border-stone-700'
+                                  : 'bg-stone-100 text-stone-600 border-stone-200'
                               }`}
                             >
                               {tool.badge}
@@ -540,7 +540,7 @@ export default function App() {
                               className={`p-1.5 rounded-lg transition-colors ${
                                 isPinned
                                   ? 'text-amber-400 bg-amber-500/10'
-                                  : 'text-slate-500 hover:text-amber-300'
+                                  : 'text-stone-500 hover:text-amber-300'
                               }`}
                               title={isPinned ? 'Bỏ ghim công cụ' : 'Ghim công cụ lên đầu'}
                             >
@@ -553,12 +553,12 @@ export default function App() {
                         </div>
 
                         {/* Title & Description */}
-                        <h3 className="text-base font-bold group-hover:text-cyan-400 transition-colors mb-1.5">
+                        <h3 className="text-base font-bold group-hover:text-amber-400 transition-colors mb-1.5">
                           {tool.title}
                         </h3>
                         <p
                           className={`text-xs sm:text-sm leading-relaxed line-clamp-2 ${
-                            darkMode ? 'text-slate-400' : 'text-slate-600'
+                            darkMode ? 'text-stone-400' : 'text-stone-600'
                           }`}
                         >
                           {tool.description}
@@ -566,15 +566,15 @@ export default function App() {
                       </div>
 
                       {/* Footer Tags & Action */}
-                      <div className="mt-5 pt-3.5 border-t border-slate-800/60 flex items-center justify-between gap-2">
+                      <div className="mt-5 pt-3.5 border-t border-stone-800/60 flex items-center justify-between gap-2">
                         <div className="flex flex-wrap gap-1.5">
                           {tool.tags.slice(0, 3).map((tag) => (
                             <span
                               key={tag}
                               className={`px-2 py-0.5 rounded-md text-[10px] font-mono ${
                                 darkMode
-                                  ? 'bg-slate-950 text-slate-400 border border-slate-800'
-                                  : 'bg-slate-100 text-slate-600'
+                                  ? 'bg-stone-950 text-stone-400 border border-stone-800'
+                                  : 'bg-stone-100 text-stone-600'
                               }`}
                             >
                               #{tag}
@@ -582,7 +582,7 @@ export default function App() {
                           ))}
                         </div>
 
-                        <span className="inline-flex items-center gap-1 text-xs font-bold text-cyan-400 group-hover:translate-x-0.5 transition-transform shrink-0">
+                        <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-400 group-hover:translate-x-0.5 transition-transform shrink-0">
                           {isInteractive ? (
                             <>
                               <Play className="w-3.5 h-3.5 fill-current" /> Mở Tool
@@ -609,13 +609,13 @@ export default function App() {
           <section id="posts-section" className="space-y-6 scroll-mt-20">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-400 mb-1">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 mb-1">
                   <BookOpen className="w-4 h-4" />
                   <span>Blog & Knowledge Notes</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold flex items-center gap-3">
                   <span>Danh Sách Các Bài Viết</span>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-teal-500/15 text-teal-400 border border-teal-500/30 font-semibold">
+                  <span className="text-xs px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 font-semibold">
                     {filteredPosts.length} bài viết
                   </span>
                 </h2>
@@ -630,10 +630,10 @@ export default function App() {
                       onClick={() => setSelectedPostCategory(cat)}
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all ${
                         selectedPostCategory === cat
-                          ? 'bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-sm'
+                          ? 'bg-gradient-to-r from-rose-600 via-amber-600 to-amber-500 text-white shadow-sm'
                           : darkMode
-                          ? 'bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800'
-                          : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
+                          ? 'bg-stone-900 hover:bg-stone-800 text-stone-300 border border-stone-800'
+                          : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'
                       }`}
                     >
                       {cat}
@@ -645,16 +645,16 @@ export default function App() {
                 <div
                   className={`hidden sm:flex items-center p-1 rounded-xl border ${
                     darkMode
-                      ? 'bg-slate-900 border-slate-800'
-                      : 'bg-white border-slate-200'
+                      ? 'bg-stone-900 border-stone-800'
+                      : 'bg-white border-stone-200'
                   }`}
                 >
                   <button
                     onClick={() => setPostViewMode('grid')}
                     className={`p-1.5 rounded-lg ${
                       postViewMode === 'grid'
-                        ? 'bg-cyan-500/20 text-cyan-400'
-                        : 'text-slate-400 hover:text-slate-200'
+                        ? 'bg-amber-500/20 text-amber-400'
+                        : 'text-stone-400 hover:text-stone-200'
                     }`}
                     title="Chế độ Lưới (Grid)"
                   >
@@ -664,8 +664,8 @@ export default function App() {
                     onClick={() => setPostViewMode('list')}
                     className={`p-1.5 rounded-lg ${
                       postViewMode === 'list'
-                        ? 'bg-cyan-500/20 text-cyan-400'
-                        : 'text-slate-400 hover:text-slate-200'
+                        ? 'bg-amber-500/20 text-amber-400'
+                        : 'text-stone-400 hover:text-stone-200'
                     }`}
                     title="Chế độ Danh sách (List)"
                   >
@@ -680,8 +680,8 @@ export default function App() {
               <div
                 className={`p-10 rounded-2xl border text-center ${
                   darkMode
-                    ? 'bg-slate-900/50 border-slate-800 text-slate-400'
-                    : 'bg-white border-slate-200 text-slate-500'
+                    ? 'bg-stone-900/50 border-stone-800 text-stone-400'
+                    : 'bg-white border-stone-200 text-stone-500'
                 }`}
               >
                 Không tìm thấy bài viết nào khớp với từ khóa "{searchQuery}".
@@ -698,14 +698,14 @@ export default function App() {
                         isFirstFeatured ? 'md:col-span-2' : ''
                       } ${
                         darkMode
-                          ? 'bg-slate-900/80 hover:bg-slate-900 border-slate-800/90 hover:border-teal-500/50 hover:shadow-xl hover:shadow-teal-950/20'
-                          : 'bg-white hover:bg-teal-50/20 border-slate-200 hover:border-teal-500 hover:shadow-lg'
+                          ? 'bg-stone-900/80 hover:bg-stone-900 border-stone-800/90 hover:border-amber-500/50 hover:shadow-xl hover:shadow-amber-950/20'
+                          : 'bg-white hover:bg-amber-50/20 border-stone-200 hover:border-amber-500 hover:shadow-lg'
                       }`}
                     >
                       <div>
                         <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                           <div className="flex items-center gap-2">
-                            <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-blue-600/20 to-teal-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-bold">
+                            <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-rose-600/20 via-amber-600/20 to-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-bold">
                               {post.category}
                             </span>
                             {post.featured && (
@@ -715,20 +715,20 @@ export default function App() {
                             )}
                           </div>
 
-                          <div className="flex items-center gap-3 text-xs text-slate-400">
+                          <div className="flex items-center gap-3 text-xs text-stone-400">
                             <span className="flex items-center gap-1">
-                              <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+                              <Calendar className="w-3.5 h-3.5 text-amber-400" />
                               {post.date}
                             </span>
                             <span className="flex items-center gap-1">
-                              <Clock className="w-3.5 h-3.5 text-teal-400" />
+                              <Clock className="w-3.5 h-3.5 text-rose-400" />
                               {post.readTime}
                             </span>
                           </div>
                         </div>
 
                         <h3
-                          className={`font-extrabold group-hover:text-cyan-400 transition-colors mb-2.5 ${
+                          className={`font-extrabold group-hover:text-amber-400 transition-colors mb-2.5 ${
                             isFirstFeatured ? 'text-xl sm:text-2xl' : 'text-lg'
                           }`}
                         >
@@ -737,22 +737,22 @@ export default function App() {
 
                         <p
                           className={`text-sm leading-relaxed ${
-                            darkMode ? 'text-slate-400' : 'text-slate-600'
+                            darkMode ? 'text-stone-400' : 'text-stone-600'
                           }`}
                         >
                           {post.excerpt}
                         </p>
                       </div>
 
-                      <div className="mt-6 pt-4 border-t border-slate-800/60 flex items-center justify-between gap-3">
+                      <div className="mt-6 pt-4 border-t border-stone-800/60 flex items-center justify-between gap-3">
                         <div className="flex flex-wrap gap-1.5">
                           {post.tags.map((t) => (
                             <span
                               key={t}
                               className={`px-2 py-0.5 rounded-md text-[11px] font-mono ${
                                 darkMode
-                                  ? 'bg-slate-950 text-slate-400 border border-slate-800'
-                                  : 'bg-slate-100 text-slate-600'
+                                  ? 'bg-stone-950 text-stone-400 border border-stone-800'
+                                  : 'bg-stone-100 text-stone-600'
                               }`}
                             >
                               #{t}
@@ -760,7 +760,7 @@ export default function App() {
                           ))}
                         </div>
 
-                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-400 group-hover:translate-x-1 transition-transform shrink-0">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 group-hover:translate-x-1 transition-transform shrink-0">
                           <span>Đọc chi tiết</span>
                           <ArrowRight className="w-4 h-4" />
                         </span>
@@ -778,31 +778,31 @@ export default function App() {
                     onClick={() => setActivePost(post)}
                     className={`group rounded-2xl border p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer transition-all ${
                       darkMode
-                        ? 'bg-slate-900/80 hover:bg-slate-900 border-slate-800 hover:border-cyan-500/40'
-                        : 'bg-white hover:bg-slate-50 border-slate-200 hover:border-cyan-500'
+                        ? 'bg-stone-900/80 hover:bg-stone-900 border-stone-800 hover:border-amber-500/40'
+                        : 'bg-white hover:bg-stone-50 border-stone-200 hover:border-amber-500'
                     }`}
                   >
                     <div className="space-y-1 max-w-2xl">
                       <div className="flex items-center gap-2.5 text-xs">
-                        <span className="font-bold text-cyan-400">{post.category}</span>
-                        <span className="text-slate-600">•</span>
-                        <span className="text-slate-400">{post.date}</span>
-                        <span className="text-slate-600">•</span>
-                        <span className="text-slate-400">{post.readTime}</span>
+                        <span className="font-bold text-amber-400">{post.category}</span>
+                        <span className="text-stone-600">•</span>
+                        <span className="text-stone-400">{post.date}</span>
+                        <span className="text-stone-600">•</span>
+                        <span className="text-stone-400">{post.readTime}</span>
                       </div>
-                      <h3 className="text-base sm:text-lg font-bold group-hover:text-cyan-400 transition-colors">
+                      <h3 className="text-base sm:text-lg font-bold group-hover:text-amber-400 transition-colors">
                         {post.title}
                       </h3>
                       <p
                         className={`text-xs sm:text-sm line-clamp-1 ${
-                          darkMode ? 'text-slate-400' : 'text-slate-600'
+                          darkMode ? 'text-stone-400' : 'text-stone-600'
                         }`}
                       >
                         {post.excerpt}
                       </p>
                     </div>
 
-                    <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-cyan-500/10 text-cyan-400 text-xs font-bold shrink-0 self-start sm:self-center">
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500/10 text-amber-400 text-xs font-bold shrink-0 self-start sm:self-center">
                       <span>Đọc bài</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </span>
@@ -818,27 +818,27 @@ export default function App() {
       <footer
         className={`mt-16 border-t py-8 ${
           darkMode
-            ? 'bg-slate-950 border-slate-900 text-slate-400'
-            : 'bg-white border-slate-200 text-slate-600'
+            ? 'bg-stone-950 border-stone-900 text-stone-400'
+            : 'bg-white border-stone-200 text-stone-600'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <div className="flex items-center gap-3">
             <img
               src={SITE_CONFIG.logoUrl}
-              alt="QTD 267"
-              className="w-8 h-8 rounded-lg bg-white p-0.5 object-contain border border-slate-700"
+              alt="HTT 267"
+              className="w-8 h-8 rounded-lg bg-white p-0.5 object-contain border border-stone-700"
             />
             <span>
-              © {new Date().getFullYear()} <strong>{SITE_CONFIG.brandName}</strong>. Trang web cá nhân lưu trữ Bài viết & Bộ công cụ.
+              © {new Date().getFullYear()} <strong>{SITE_CONFIG.brandName}</strong> ({SITE_CONFIG.author.name}). Trang web cá nhân lưu trữ Bài viết & Bộ công cụ.
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-slate-400">
-            <FolderGit2 className="w-4 h-4 text-cyan-400" />
+          <div className="flex items-center gap-2 text-stone-400">
+            <FolderGit2 className="w-4 h-4 text-amber-400" />
             <span>
               Chỉnh sửa nội dung tại:{' '}
-              <code className="px-1.5 py-0.5 rounded bg-slate-900 text-cyan-300 font-mono">
+              <code className="px-1.5 py-0.5 rounded bg-stone-900 text-amber-300 font-mono">
                 src/data/siteData.js
               </code>
             </span>

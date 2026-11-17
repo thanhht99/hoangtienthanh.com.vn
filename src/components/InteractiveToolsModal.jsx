@@ -21,31 +21,31 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
 
   // 1. JSON Formatter State
   const [jsonInput, setJsonInput] = useState(
-    '{\n  "project": "QTD 267",\n  "owner": "QTD",\n  "features": ["Blog Bài Viết", "Bộ Công Cụ Tiện Ích"],\n  "active": true\n}'
+    '{\n  "project": "HTT 267",\n  "author": "Hoàng Tiến Thành",\n  "website": "https://hoangtienthanh.com.vn",\n  "features": ["Blog Bài Viết", "Bộ Công Cụ Tiện Ích"],\n  "active": true\n}'
   );
   const [jsonError, setJsonError] = useState('');
 
   // 2. Encoder State (Base64 / URL)
-  const [encInput, setEncInput] = useState('Chào mừng bạn đến với dự án web cá nhân QTD 267!');
+  const [encInput, setEncInput] = useState('Chào mừng bạn đến với không gian cá nhân HTT 267 (hoangtienthanh.com.vn)!');
   const [encMode, setEncMode] = useState('base64-encode');
   const [encOutput, setEncOutput] = useState('');
 
   // 3. Text Analyzer State
   const [textInput, setTextInput] = useState(
-    'Trang web cá nhân QTD 267: Nơi tổng hợp danh sách bài viết chia sẻ kiến thức và danh sách các công cụ tiện ích phục vụ công việc hàng ngày.'
+    'Trang web cá nhân HTT 267 — Hoàng Tiến Thành: Nơi tổng hợp danh sách bài viết chia sẻ kiến thức và bộ công cụ tiện ích phục vụ công việc hàng ngày.'
   );
 
   // 4. Password & UUID Generator State
   const [pwdLength, setPwdLength] = useState(16);
   const [pwdIncludeSymbols, setPwdIncludeSymbols] = useState(true);
   const [pwdIncludeNumbers, setPwdIncludeNumbers] = useState(true);
-  const [generatedPwd, setGeneratedPwd] = useState('Qtd267#2026!Secure@99');
+  const [generatedPwd, setGeneratedPwd] = useState('Htt267#2026!Secure@99');
   const [uuidList, setUuidList] = useState(() => [
     crypto.randomUUID ? crypto.randomUUID() : '550e8400-e29b-41d4-a716-446655440000',
   ]);
 
   // 5. QR Code State
-  const [qrText, setQrText] = useState('https://qtd267.dev');
+  const [qrText, setQrText] = useState('https://hoangtienthanh.com.vn');
   const [qrSize, setQrSize] = useState(240);
 
   // 6. Timestamp Converter State
@@ -155,7 +155,7 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
   const parsedDate = getParsedDate();
 
   const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${qrSize}x${qrSize}&margin=12&data=${encodeURIComponent(
-    qrText || 'https://qtd267.dev'
+    qrText || 'https://hoangtienthanh.com.vn'
   )}`;
 
   const getIconComponent = (key) => {
@@ -176,28 +176,28 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-4xl max-h-[90vh] flex flex-col rounded-2xl bg-slate-900 border border-cyan-500/30 shadow-2xl shadow-cyan-950/50 overflow-hidden text-slate-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-4xl max-h-[90vh] flex flex-col rounded-2xl bg-stone-900 border border-amber-500/30 shadow-2xl shadow-amber-950/50 overflow-hidden text-stone-100">
         {/* Top Header */}
-        <div className="flex items-center justify-between px-6 py-4 bg-slate-900/90 border-b border-slate-800">
+        <div className="flex items-center justify-between px-6 py-4 bg-stone-900/95 border-b border-stone-800">
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-teal-500 text-white shadow-md shadow-cyan-500/20">
+            <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-rose-600 via-amber-600 to-amber-500 text-white shadow-md shadow-amber-500/20">
               <Sparkles className="w-5 h-5" />
             </span>
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-lg font-bold text-white">{tool.title}</h3>
-                <span className="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-teal-500/15 text-teal-300 border border-teal-500/30">
-                  QTD 267 Tool
+                <span className="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                  HTT 267 Tool
                 </span>
               </div>
-              <p className="text-xs text-slate-400">{tool.description}</p>
+              <p className="text-xs text-stone-400">{tool.description}</p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
             title="Đóng (Esc)"
           >
             <X className="w-5 h-5" />
@@ -206,8 +206,8 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
 
         {/* Switcher Bar between Interactive Tools */}
         {allInteractiveTools?.length > 1 && (
-          <div className="flex items-center gap-2 px-6 py-2.5 bg-slate-950/60 border-b border-slate-800/80 overflow-x-auto">
-            <span className="text-xs font-medium text-slate-400 shrink-0 mr-1">Đổi nhanh:</span>
+          <div className="flex items-center gap-2 px-6 py-2.5 bg-stone-950/70 border-b border-stone-800 overflow-x-auto">
+            <span className="text-xs font-medium text-stone-400 shrink-0 mr-1">Đổi nhanh:</span>
             {allInteractiveTools.map((item) => {
               const active = item.toolKey === tool.toolKey;
               return (
@@ -216,8 +216,8 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                   onClick={() => onSelectTool(item)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium shrink-0 transition-all ${
                     active
-                      ? 'bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-sm'
-                      : 'bg-slate-800/70 text-slate-300 hover:bg-slate-800 hover:text-white'
+                      ? 'bg-gradient-to-r from-rose-600 to-amber-500 text-white shadow-sm'
+                      : 'bg-stone-800/70 text-stone-300 hover:bg-stone-800 hover:text-white'
                   }`}
                 >
                   {getIconComponent(item.toolKey)}
@@ -237,19 +237,19 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleFormatJson(2)}
-                    className="px-3.5 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 text-white text-xs font-semibold shadow-sm transition-all"
+                    className="px-3.5 py-2 rounded-lg bg-gradient-to-r from-rose-600 via-amber-600 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white text-xs font-semibold shadow-sm transition-all"
                   >
                     Làm đẹp (Format 2 spaces)
                   </button>
                   <button
                     onClick={() => handleFormatJson(4)}
-                    className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors"
+                    className="px-3 py-2 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-medium transition-colors"
                   >
                     Format 4 spaces
                   </button>
                   <button
                     onClick={() => handleFormatJson(0)}
-                    className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors"
+                    className="px-3 py-2 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-medium transition-colors"
                   >
                     Nén (Minify)
                   </button>
@@ -257,7 +257,7 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => copyToClipboard(jsonInput)}
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-medium transition-colors"
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-medium transition-colors"
                   >
                     {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                     {copied ? 'Đã sao chép!' : 'Copy JSON'}
@@ -267,7 +267,7 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                       setJsonInput('');
                       setJsonError('');
                     }}
-                    className="p-2 rounded-lg bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-300 transition-colors"
+                    className="p-2 rounded-lg bg-stone-800 hover:bg-rose-500/20 text-stone-400 hover:text-rose-300 transition-colors"
                     title="Xóa trắng"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -280,7 +280,7 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                   ❌ Lỗi cú pháp JSON: {jsonError}
                 </div>
               ) : (
-                <div className="px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs">
+                <div className="px-3 py-2 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs">
                   ✓ Sẵn sàng xử lý JSON ngay trên trình duyệt của bạn.
                 </div>
               )}
@@ -293,7 +293,7 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                   setJsonError('');
                 }}
                 placeholder="Dán chuỗi JSON của bạn vào đây..."
-                className="w-full p-4 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none font-mono text-sm text-cyan-100 leading-relaxed"
+                className="w-full p-4 rounded-xl bg-stone-950 border border-stone-800 focus:border-amber-500 focus:outline-none font-mono text-sm text-amber-100 leading-relaxed"
               />
             </div>
           )}
@@ -316,8 +316,8 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                     }}
                     className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                       encMode === m.id
-                        ? 'bg-gradient-to-r from-blue-600 to-teal-500 text-white'
-                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                        ? 'bg-gradient-to-r from-rose-600 to-amber-500 text-white'
+                        : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
                     }`}
                   >
                     {m.label}
@@ -328,10 +328,10 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <label className="text-xs font-semibold text-slate-300">Dữ liệu đầu vào (Input)</label>
+                    <label className="text-xs font-semibold text-stone-300">Dữ liệu đầu vào (Input)</label>
                     <button
                       onClick={() => setEncInput('')}
-                      className="text-xs text-slate-400 hover:text-rose-400"
+                      className="text-xs text-stone-400 hover:text-rose-400"
                     >
                       Xóa
                     </button>
@@ -344,13 +344,13 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                       setEncOutput('');
                     }}
                     placeholder="Nhập văn bản hoặc chuỗi cần xử lý..."
-                    className="w-full p-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none font-mono text-sm text-slate-100"
+                    className="w-full p-3.5 rounded-xl bg-stone-950 border border-stone-800 focus:border-amber-500 focus:outline-none font-mono text-sm text-stone-100"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <label className="text-xs font-semibold text-cyan-300">Kết quả (Output)</label>
+                    <label className="text-xs font-semibold text-amber-300">Kết quả (Output)</label>
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => {
@@ -361,14 +361,14 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                               : encMode.replace('decode', 'encode')
                           );
                         }}
-                        className="flex items-center gap-1 text-xs text-slate-300 hover:text-cyan-300"
+                        className="flex items-center gap-1 text-xs text-stone-300 hover:text-amber-300"
                         title="Đảo chiều Input/Output"
                       >
                         <ArrowRightLeft className="w-3.5 h-3.5" /> Đảo chiều
                       </button>
                       <button
                         onClick={() => copyToClipboard(activeEncodedResult)}
-                        className="flex items-center gap-1 text-xs text-cyan-400 hover:text-cyan-300 font-semibold"
+                        className="flex items-center gap-1 text-xs text-amber-400 hover:text-amber-300 font-semibold"
                       >
                         {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                         {copied ? 'Đã chép' : 'Copy'}
@@ -379,7 +379,7 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                     rows={8}
                     readOnly
                     value={activeEncodedResult}
-                    className="w-full p-3.5 rounded-xl bg-slate-950/70 border border-cyan-500/20 font-mono text-sm text-cyan-200"
+                    className="w-full p-3.5 rounded-xl bg-stone-950/70 border border-amber-500/20 font-mono text-sm text-amber-200"
                   />
                 </div>
               </div>
@@ -399,12 +399,12 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center"
+                    className="p-3 rounded-xl bg-stone-950 border border-stone-800 text-center"
                   >
-                    <div className="text-xl font-extrabold bg-gradient-to-r from-blue-400 to-teal-300 bg-clip-text text-transparent">
+                    <div className="text-xl font-extrabold bg-gradient-to-r from-rose-500 via-amber-400 to-yellow-300 bg-clip-text text-transparent">
                       {stat.value}
                     </div>
-                    <div className="text-[11px] text-slate-400 mt-0.5">{stat.label}</div>
+                    <div className="text-[11px] text-stone-400 mt-0.5">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -412,31 +412,31 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
               <div className="flex flex-wrap items-center gap-2">
                 <button
                   onClick={() => setTextInput(textInput.toUpperCase())}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium"
+                  className="px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-xs font-medium"
                 >
                   IN HOA TOÀN BỘ
                 </button>
                 <button
                   onClick={() => setTextInput(textInput.toLowerCase())}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium"
+                  className="px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-xs font-medium"
                 >
                   chữ thường toàn bộ
                 </button>
                 <button
                   onClick={() => setTextInput(toVietnameseSlug(textInput))}
-                  className="px-3 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-medium"
+                  className="px-3 py-1.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-medium"
                 >
                   Tạo Slug URL Tiếng Việt
                 </button>
                 <button
                   onClick={() => setTextInput(textInput.replace(/\s+/g, ' ').trim())}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium"
+                  className="px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-xs font-medium"
                 >
                   Xóa khoảng trắng thừa
                 </button>
                 <button
                   onClick={() => copyToClipboard(textInput)}
-                  className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-blue-600 to-teal-500 text-white text-xs font-semibold"
+                  className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-600 to-amber-500 text-white text-xs font-semibold"
                 >
                   {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                   {copied ? 'Đã sao chép!' : 'Copy văn bản'}
@@ -448,7 +448,7 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                 value={textInput}
                 onChange={(e) => setTextInput(e.target.value)}
                 placeholder="Nhập hoặc dán đoạn văn bản cần đếm từ và xử lý..."
-                className="w-full p-4 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none text-sm text-slate-100 leading-relaxed"
+                className="w-full p-4 rounded-xl bg-stone-950 border border-stone-800 focus:border-amber-500 focus:outline-none text-sm text-stone-100 leading-relaxed"
               />
             </div>
           )}
@@ -456,15 +456,15 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
           {/* TOOL 4: PASSWORD & UUID GENERATOR */}
           {tool.toolKey === 'generator' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-4">
-                <h4 className="text-sm font-bold text-cyan-300 uppercase tracking-wider">
+              <div className="p-5 rounded-2xl bg-stone-950 border border-stone-800 space-y-4">
+                <h4 className="text-sm font-bold text-amber-300 uppercase tracking-wider">
                   1. Tạo Mật Khẩu Bảo Mật Cao
                 </h4>
-                <div className="p-3.5 rounded-xl bg-slate-900 border border-cyan-500/30 flex items-center justify-between gap-2">
-                  <span className="font-mono text-sm text-emerald-300 break-all">{generatedPwd}</span>
+                <div className="p-3.5 rounded-xl bg-stone-900 border border-amber-500/30 flex items-center justify-between gap-2">
+                  <span className="font-mono text-sm text-amber-300 break-all">{generatedPwd}</span>
                   <button
                     onClick={() => copyToClipboard(generatedPwd)}
-                    className="p-2 rounded-lg bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/30 shrink-0"
+                    className="p-2 rounded-lg bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 shrink-0"
                     title="Copy mật khẩu"
                   >
                     {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
@@ -473,31 +473,31 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
 
                 <div className="space-y-3 text-xs">
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-300">Độ dài mật khẩu: <strong>{pwdLength} ký tự</strong></span>
+                    <span className="text-stone-300">Độ dài mật khẩu: <strong>{pwdLength} ký tự</strong></span>
                     <input
                       type="range"
                       min={8}
                       max={40}
                       value={pwdLength}
                       onChange={(e) => setPwdLength(Number(e.target.value))}
-                      className="accent-cyan-400"
+                      className="accent-amber-400"
                     />
                   </div>
-                  <label className="flex items-center gap-2 text-slate-300 cursor-pointer">
+                  <label className="flex items-center gap-2 text-stone-300 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={pwdIncludeNumbers}
                       onChange={(e) => setPwdIncludeNumbers(e.target.checked)}
-                      className="accent-cyan-500"
+                      className="accent-amber-500"
                     />
                     Bao gồm chữ số (0-9)
                   </label>
-                  <label className="flex items-center gap-2 text-slate-300 cursor-pointer">
+                  <label className="flex items-center gap-2 text-stone-300 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={pwdIncludeSymbols}
                       onChange={(e) => setPwdIncludeSymbols(e.target.checked)}
-                      className="accent-cyan-500"
+                      className="accent-amber-500"
                     />
                     Bao gồm ký tự đặc biệt (!@#$%^&*)
                   </label>
@@ -505,20 +505,20 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
 
                 <button
                   onClick={generatePassword}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 text-white text-xs font-semibold shadow-md"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white text-xs font-semibold shadow-md"
                 >
                   <RefreshCw className="w-4 h-4" /> Tạo mật khẩu mới
                 </button>
               </div>
 
-              <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-4">
+              <div className="p-5 rounded-2xl bg-stone-950 border border-stone-800 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-sm font-bold text-cyan-300 uppercase tracking-wider">
+                  <h4 className="text-sm font-bold text-amber-300 uppercase tracking-wider">
                     2. Tạo Mã UUID v4
                   </h4>
                   <button
                     onClick={() => generateUuids(4)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-cyan-300 font-medium"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-xs text-amber-300 font-medium"
                   >
                     <RefreshCw className="w-3.5 h-3.5" /> Tạo 4 mã mới
                   </button>
@@ -528,12 +528,12 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                   {uuidList.map((u, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs text-slate-200"
+                      className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-800 font-mono text-xs text-stone-200"
                     >
                       <span>{u}</span>
                       <button
                         onClick={() => copyToClipboard(u)}
-                        className="text-cyan-400 hover:text-cyan-300"
+                        className="text-amber-400 hover:text-amber-300"
                         title="Copy UUID"
                       >
                         <Copy className="w-3.5 h-3.5" />
@@ -550,28 +550,28 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
               <div className="md:col-span-3 space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-2">
+                  <label className="block text-xs font-semibold text-stone-300 mb-2">
                     Nhập đường dẫn URL hoặc nội dung văn bản muốn tạo mã QR:
                   </label>
                   <textarea
                     rows={4}
                     value={qrText}
                     onChange={(e) => setQrText(e.target.value)}
-                    placeholder="https://qtd267.dev hoặc nội dung bất kỳ..."
-                    className="w-full p-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none text-sm text-slate-100"
+                    placeholder="https://hoangtienthanh.com.vn hoặc nội dung bất kỳ..."
+                    className="w-full p-3.5 rounded-xl bg-stone-950 border border-stone-800 focus:border-amber-500 focus:outline-none text-sm text-stone-100"
                   />
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <label className="text-xs text-slate-400">Kích thước ảnh:</label>
+                  <label className="text-xs text-stone-400">Kích thước ảnh:</label>
                   {[180, 240, 320].map((sz) => (
                     <button
                       key={sz}
                       onClick={() => setQrSize(sz)}
                       className={`px-3 py-1.5 rounded-lg text-xs font-medium ${
                         qrSize === sz
-                          ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
-                          : 'bg-slate-800 text-slate-400'
+                          ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                          : 'bg-stone-800 text-stone-400'
                       }`}
                     >
                       {sz}x{sz}px
@@ -580,11 +580,11 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                 </div>
               </div>
 
-              <div className="md:col-span-2 flex flex-col items-center justify-center p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+              <div className="md:col-span-2 flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-950 border border-stone-800 space-y-3">
                 <div className="p-3 bg-white rounded-2xl shadow-lg">
                   <img
                     src={qrImageUrl}
-                    alt="QR Code QTD 267"
+                    alt="QR Code HTT 267"
                     className="w-44 h-44 object-contain"
                   />
                 </div>
@@ -592,7 +592,7 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                   href={qrImageUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-teal-500 text-white text-xs font-semibold shadow-sm"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-rose-600 via-amber-600 to-amber-500 text-white text-xs font-semibold shadow-sm"
                 >
                   <Download className="w-3.5 h-3.5" /> Mở ảnh QR chất lượng cao
                 </a>
@@ -608,12 +608,12 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
                   type="text"
                   value={tsInput}
                   onChange={(e) => setTsInput(e.target.value)}
-                  placeholder="Nhập Unix Timestamp (VD: 1793806076)"
-                  className="flex-1 min-w-[240px] px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none font-mono text-sm text-cyan-200"
+                  placeholder="Nhập Unix Timestamp (VD: 1794932692)"
+                  className="flex-1 min-w-[240px] px-4 py-2.5 rounded-xl bg-stone-950 border border-stone-800 focus:border-amber-500 focus:outline-none font-mono text-sm text-amber-200"
                 />
                 <button
                   onClick={() => setTsInput(Math.floor(Date.now() / 1000).toString())}
-                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-teal-500 text-white text-xs font-semibold"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 via-amber-600 to-amber-500 text-white text-xs font-semibold"
                 >
                   Lấy Timestamp Hiện Tại
                 </button>
@@ -621,27 +621,27 @@ export default function InteractiveToolsModal({ tool, allInteractiveTools, onSel
 
               {parsedDate ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-                    <div className="text-xs text-slate-400">Giờ địa phương (Việt Nam GMT+7)</div>
-                    <div className="text-base font-bold text-teal-300 mt-1 font-mono">
+                  <div className="p-4 rounded-xl bg-stone-950 border border-stone-800">
+                    <div className="text-xs text-stone-400">Giờ địa phương (Việt Nam GMT+7)</div>
+                    <div className="text-base font-bold text-amber-300 mt-1 font-mono">
                       {parsedDate.toLocaleString('vi-VN', { hour12: false })}
                     </div>
                   </div>
-                  <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-                    <div className="text-xs text-slate-400">Chuẩn quốc tế (ISO 8601 / UTC)</div>
-                    <div className="text-base font-bold text-blue-300 mt-1 font-mono">
+                  <div className="p-4 rounded-xl bg-stone-950 border border-stone-800">
+                    <div className="text-xs text-stone-400">Chuẩn quốc tế (ISO 8601 / UTC)</div>
+                    <div className="text-base font-bold text-orange-300 mt-1 font-mono">
                       {parsedDate.toISOString()}
                     </div>
                   </div>
-                  <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-                    <div className="text-xs text-slate-400">Unix Giây (Seconds)</div>
-                    <div className="text-sm font-mono text-slate-200 mt-1">
+                  <div className="p-4 rounded-xl bg-stone-950 border border-stone-800">
+                    <div className="text-xs text-stone-400">Unix Giây (Seconds)</div>
+                    <div className="text-sm font-mono text-stone-200 mt-1">
                       {Math.floor(parsedDate.getTime() / 1000)}
                     </div>
                   </div>
-                  <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-                    <div className="text-xs text-slate-400">Unix Mili-giây (Milliseconds)</div>
-                    <div className="text-sm font-mono text-slate-200 mt-1">
+                  <div className="p-4 rounded-xl bg-stone-950 border border-stone-800">
+                    <div className="text-xs text-stone-400">Unix Mili-giây (Milliseconds)</div>
+                    <div className="text-sm font-mono text-stone-200 mt-1">
                       {parsedDate.getTime()}
                     </div>
                   </div>

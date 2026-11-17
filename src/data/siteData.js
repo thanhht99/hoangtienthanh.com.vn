@@ -1,23 +1,23 @@
 /**
- * FILE CẤU HÌNH DỮ LIỆU TRANG WEB CÁ NHÂN "QTD 267"
+ * FILE CẤU HÌNH DỮ LIỆU TRANG WEB CÁ NHÂN "HTT 267"
  * -------------------------------------------------
  * Bạn có thể dễ dàng thêm, sửa, xóa bài viết (posts) hoặc công cụ (tools)
  * trực tiếp tại file này mà không cần sửa code giao diện.
  */
 
 export const SITE_CONFIG = {
-  brandName: "QTD 267",
+  brandName: "HTT 267",
   shortName: "267",
   logoUrl: "/logo.png",
-  tagline: "Không gian lưu trữ bài viết, kiến thức công nghệ & bộ công cụ tiện ích cá nhân.",
-  heroBadge: "Personal Digital Hub • QTD 267",
+  tagline: "Không gian số của Hoàng Tiến Thành: Bài viết, kiến thức công nghệ & bộ công cụ tiện ích cá nhân.",
+  heroBadge: "Personal Digital Hub • Hoàng Tiến Thành (HTT 267)",
   author: {
-    name: "QTD 267",
+    name: "Hoàng Tiến Thành",
     role: "Developer & Tech Enthusiast",
     location: "Việt Nam",
-    email: "contact@qtd267.dev",
-    github: "https://github.com",
-    facebook: "https://facebook.com",
+    email: "contact@hoangtienthanh.com.vn",
+    github: "https://github.com/thanhht99",
+    website: "https://hoangtienthanh.com.vn",
   },
 };
 
@@ -126,7 +126,7 @@ export const TOOLS_DATA = [
   {
     id: "tool-squoosh",
     title: "Squoosh — Nén & Tối Ưu Hóa Hình Ảnh",
-    description: "Ứng dụng nén ảnh WebP, AVIF, PNG chất lượng cao của Google Chrome Labs chạy hoàn toàn локаl.",
+    description: "Ứng dụng nén ảnh WebP, AVIF, PNG chất lượng cao của Google Chrome Labs chạy hoàn toàn local.",
     category: "Thiết kế & Media",
     type: "external",
     url: "https://squoosh.app/",
@@ -154,20 +154,20 @@ export const TOOLS_DATA = [
  */
 export const POSTS_DATA = [
   {
-    id: "post-welcome-267",
-    title: "Chào mừng đến với QTD 267 — Ngôi nhà số & Bộ công cụ cá nhân",
-    excerpt: "Lý do mình xây dựng trang web QTD 267: một nơi tập trung các ghi chú kỹ thuật, bài viết chia sẻ kinh nghiệm và những công cụ mình sử dụng hàng ngày.",
+    id: "post-welcome-htt267",
+    title: "Chào mừng đến với HTT 267 — Ngôi nhà số & Bộ công cụ cá nhân",
+    excerpt: "Lý do mình xây dựng trang web hoangtienthanh.com.vn: một nơi tập trung các ghi chú kỹ thuật, bài viết chia sẻ kinh nghiệm và những công cụ mình sử dụng hàng ngày.",
     category: "Góc cá nhân",
-    date: "04/11/2026",
+    date: "17/11/2026",
     readTime: "3 phút đọc",
     featured: true,
-    tags: ["QTD267", "Personal Web", "Productivity"],
+    tags: ["HTT267", "HoangTienThanh", "Productivity"],
     content: `
-### Tại sao lại là QTD 267?
+### Tại sao lại là HTT 267?
 
 Khi làm việc với hàng chục dự án và công cụ mỗi ngày, mình nhận ra việc lưu trữ rải rác trên nhiều nền tảng khiến việc tìm lại một đoạn snippet hay mở nhanh một công cụ tốn khá nhiều thời gian.
 
-Vì vậy, **QTD 267** ra đời với hai mục tiêu chính:
+Vì vậy, **HTT 267 (hoangtienthanh.com.vn)** ra đời với hai mục tiêu chính:
 1. **Danh sách Bài viết (Knowledge Base):** Lưu lại các bài hướng dẫn, kinh nghiệm xử lý lỗi, kiến trúc hệ thống và những góc nhìn cá nhân.
 2. **Danh sách Công cụ (Tools Hub):** Tích hợp trực tiếp những công cụ nhỏ gọn (như format JSON, tạo QR, mã hóa Base64, chuyển đổi văn bản...) chạy ngay trên trình duyệt mà không cần mở tab thứ ba hay lo ngại về quyền riêng tư dữ liệu.
 
@@ -191,7 +191,7 @@ Toàn bộ dữ liệu của trang web được quản lý tập trung tại fil
 Mỗi lần bạn phải chuyển từ trình soạn thảo code sang trình duyệt, tìm kiếm Google một công cụ đổi Timestamp hoặc Format JSON, bạn mất trung bình từ 2 đến 5 phút để lấy lại sự tập trung sâu.
 
 Giải pháp hiệu quả nhất là:
-- Gom toàn bộ các tiện ích hay dùng về **một trang Dashboard duy nhất** (như trang QTD 267 này).
+- Gom toàn bộ các tiện ích hay dùng về **một trang Dashboard duy nhất** (như trang HTT 267 này).
 - Tận dụng phím tắt tìm kiếm nhanh (\`Ctrl + K\` hoặc \`/\`) để truy cập công cụ trong tích tắc.
 
 ### 2. Tự động hóa những tác vụ lặp đi lặp lại
@@ -213,22 +213,22 @@ const toSlug = (str) =>
     `.trim(),
   },
   {
-    id: "post-react-tailwind-architecture",
-    title: "Kinh nghiệm thiết kế giao diện Dark Mode hiện đại với React & Tailwind CSS",
-    excerpt: "Cách phối màu chuẩn thị giác với tông Xanh Dương - Ngọc Lục Bảo (Blue-Teal), sử dụng hiệu ứng kính mờ (Glassmorphism) và phân cấp độ tương phản.",
+    id: "post-warm-palette-architecture",
+    title: "Nghệ thuật phối màu Terracotta & Amber Gold cho giao diện Web hiện đại",
+    excerpt: "Cách xây dựng phong cách giao diện ấm cúng, sang trọng với tông màu Đất nung (Terracotta), Hổ phách (Amber) và Vàng đồng (Ochre Gold).",
     category: "Lập trình",
     date: "28/10/2026",
     readTime: "6 phút đọc",
     featured: false,
-    tags: ["React", "TailwindCSS", "UI/UX"],
+    tags: ["React", "TailwindCSS", "UI/UX", "Design"],
     content: `
-### Nguyên tắc phối màu theo nhận diện thương hiệu QTD 267
+### Nguyên tắc phối màu theo nhận diện thương hiệu HTT 267
 
-Logo **QTD 267** mang dải chuyển sắc đặc trưng từ **Xanh đại dương đậm (Ocean Blue)** sang **Xanh ngọc (Teal/Cyan)**. Khi đưa lên giao diện web:
+Logo **HTT 267** mang dải chuyển sắc nghệ thuật từ **Đỏ sẫm / Đất nung (Terracotta)** qua **Hổ phách (Amber)** đến **Vàng mật ong (Honey Gold)**:
 
-- **Nền chính (Background):** Sử dụng tông \`slate-950\` hoặc \`slate-900\` ở chế độ tối để làm nổi bật ánh sáng xanh ngọc mà không gây mỏi mắt.
-- **Điểm nhấn (Accent Gradient):** Kết hợp \`from-blue-600 via-cyan-500 to-teal-400\` cho các nút hành động chính (Primary CTA) và đường viền thẻ nổi bật.
-- **Độ tương phản chữ:** Luôn đảm bảo văn bản chính đạt độ sáng cao (\`slate-100\`) và văn bản phụ dùng \`slate-400\` để phân tách rõ ràng tiêu đề và mô tả.
+- **Nền chính (Background):** Sử dụng tông \`stone-950\` hoặc \`stone-900\` trầm ấm ở chế độ tối, giúp ánh sáng vàng hổ phách tỏa sáng dịu mắt và quý phái.
+- **Điểm nhấn (Accent Gradient):** Kết hợp \`from-rose-600 via-amber-500 to-yellow-400\` cho các nút hành động chính (Primary CTA) và đường viền thẻ nổi bật.
+- **Độ tương phản chữ:** Dùng \`stone-100\` cho tiêu đề chính và \`stone-400\` cho nội dung mô tả để đảm bảo chuẩn tương phản WCAG.
     `.trim(),
   },
   {
@@ -269,7 +269,7 @@ Thay vì viết những dòng commit chung chung như \`fix bug\` hay \`update c
 - \`docs:\` Cập nhật tài liệu, hướng dẫn
 - \`refactor:\` Tối ưu cấu trúc code mà không làm thay đổi logic chạy
 
-Nhờ vậy, khi nhìn vào danh sách commit của dự án **267**, bạn có thể nắm bắt ngay tiến độ phát triển chỉ trong vài giây!
+Nhờ vậy, khi nhìn vào danh sách commit của dự án **HTT 267**, bạn có thể nắm bắt ngay tiến độ phát triển chỉ trong vài giây!
     `.trim(),
   },
 ];
